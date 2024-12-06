@@ -86,29 +86,29 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -yq \
 RUN go install github.com/go-task/task/v3/cmd/task@latest
 
 ## MySQL Client
-RUN DEBIAN_FRONTEND=noninteractive apt install -yq \
-    mariadb-client
+#RUN DEBIAN_FRONTEND=noninteractive apt install -yq \
+#    mariadb-client
 
 # mysqlsh https://dev.mysql.com/downloads/repo/apt/
-RUN wget https://dev.mysql.com/get/mysql-apt-config_0.8.33-1_all.deb
-RUN DEBIAN_FRONTEND=noninteractive \
-    dpkg -i mysql-apt-config_0.8.33-1_all.deb \
-    && apt-get update \
-    && apt-get install -yq mysql-shell \
-    && apt-get full-ugrade -y
+#RUN wget https://dev.mysql.com/get/mysql-apt-config_0.8.33-1_all.deb
+#RUN DEBIAN_FRONTEND=noninteractive \
+#    dpkg -i mysql-apt-config_0.8.33-1_all.deb \
+#    && apt-get update \
+#    && apt-get install -yq mysql-shell \
+#    && apt-get full-ugrade -y
 
 ##RUN apt update
 ##RUN DEBIAN_FRONTEND=noninteractive apt install -yq \
 ##    mysql-shell
 
-RUN chsh -s /usr/bin/fish
+RUN chsh -s $(which fish)
 
 COPY whatismyip.sh /usr/local/bin/
 
 # Clean up
 RUN rm -rf /var/lib/apt/lists/*
 RUN rm -rf /var/cache/apt/*
-RUN rm -rf ./percona-release_latest.generic_all.deb
-RUN rm -rf ./mysql-apt-config_0.8.*.deb
+#RUN rm -rf ./percona-release_latest.generic_all.deb
+#RUN rm -rf ./mysql-apt-config_0.8.*.deb
 
 WORKDIR /root
