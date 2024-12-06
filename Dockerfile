@@ -7,7 +7,8 @@ RUN ln -fs /usr/share/zoneinfo/Europe/Berlin /etc/localtime
 
 # Basic Tools
 RUN apt update
-#RUN DEBIAN_FRONTEND=noninteractive apt-get -o Acquire::http::proxy=http://localhost:3142 \
+#RUN DEBIAN_FRONTEND=noninteractive apt-get -o Acquire::http::proxy=http://localhost:3142
+
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -yq \
     apache2-utils \
     aria2 \
