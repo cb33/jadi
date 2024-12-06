@@ -42,6 +42,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -yq \
     libffi-dev \
     libssl-dev \
     lsb-release \
+    mc \
     mtr \
     mydumper \
     ncdu \
