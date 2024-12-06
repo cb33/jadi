@@ -3,9 +3,10 @@
 # https://www.cyberciti.biz/faq/how-to-find-my-public-ip-address-from-command-line-on-a-linux/
 
 printf "%$(tput cols)s\n"|tr ' ' '-'
+echo whatismijnip.nl
 ip=$(curl -s http://whatismijnip.nl |cut -d " " -f 5)
 echo "IP: ${ip}"
-dig -x ${ip} +short
+echo $(dig -x ${ip} +short)
 
 printf "%$(tput cols)s\n"|tr ' ' '-'
 echo ifconfig.me
