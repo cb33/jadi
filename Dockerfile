@@ -27,6 +27,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -yq \
     gdu \
     git \
     gnupg \
+    golang \
     htop \
     httpie \
     iftop \
@@ -80,6 +81,9 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -yq \
     yq \
     zst \
     zstd
+
+# install latest taskfile (https://taskfile.dev/)
+RUN go install github.com/go-task/task/v3/cmd/task@latest
 
 ## MySQL Client
 RUN DEBIAN_FRONTEND=noninteractive apt install -yq \
