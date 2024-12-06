@@ -85,12 +85,13 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -yq \
 RUN DEBIAN_FRONTEND=noninteractive apt install -yq \
     mariadb-client
 
-# mysqlsh
-RUN wget https://dev.mysql.com/get/mysql-apt-config_0.8.30-1_all.deb
+# mysqlsh https://dev.mysql.com/downloads/repo/apt/
+RUN wget https://dev.mysql.com/get/mysql-apt-config_0.8.33-1_all.deb
 RUN DEBIAN_FRONTEND=noninteractive \
-    dpkg -i mysql-apt-config_0.8.30-1_all.deb \
-    && apt update \
-    && apt install -yq mysql-shell
+    dpkg -i mysql-apt-config_0.8.33-1_all.deb \
+    && apt-get update \
+    && apt-get install -yq mysql-shell \
+    && apt-get full-ugrade -y
 
 ##RUN apt update
 ##RUN DEBIAN_FRONTEND=noninteractive apt install -yq \
@@ -104,6 +105,6 @@ COPY whatismyip.sh /usr/local/bin/
 RUN rm -rf /var/lib/apt/lists/*
 RUN rm -rf /var/cache/apt/*
 RUN rm -rf ./percona-release_latest.generic_all.deb
-RUN rm -rf ./mysql-apt-config_0.8.30-1_all.deb
+RUN rm -rf ./mysql-apt-config_0.8.*.deb
 
 WORKDIR /root
