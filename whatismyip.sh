@@ -32,3 +32,10 @@ echo ifconfig.co
 ip=$(curl -sS ifconfig.co)
 echo "IP: ${ip}"
 dig -x ${ip} +short
+
+printf "%$(tput cols)s\n"|tr ' ' '-'
+echo ip.scale.sc
+ip=$(curl -sS https://ip.scale.sc/)
+echo "IP: ${ip}"
+dig -x ${ip} +short
+
