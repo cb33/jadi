@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 
-FROM ubuntu:latest
+FROM ubuntu:latest AS base
 
 # Correct Timezone
 RUN ln -fs /usr/share/zoneinfo/Europe/Berlin /etc/localtime
@@ -103,12 +103,14 @@ RUN go install github.com/go-task/task/v3/cmd/task@latest
 
 RUN chsh -s $(which fish)
 
-COPY whatismyip.sh /usr/local/bin/
-
 # Clean up
 RUN rm -rf /var/lib/apt/lists/*
 RUN rm -rf /var/cache/apt/*
 #RUN rm -rf ./percona-release_latest.generic_all.deb
 #RUN rm -rf ./mysql-apt-config_0.8.*.deb
+
+FROM base AS custom
+
+COPY whatismyip.sh /usr/local/bin/
 
 WORKDIR /root
